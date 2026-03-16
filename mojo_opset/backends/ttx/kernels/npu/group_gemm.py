@@ -105,14 +105,14 @@ def _m_grouped_matmul_bKmajor_kernel(
                     mask=msk_m[:, None] and (offs_k[None, :] < K - k * BLOCK_K),
                     other=0.0,
                 )
-                tl.compile_hint(a, "dot_pad_only_k")
+                tl.extra.cann.extension.compile_hint(a, "dot_pad_only_k")
                 b = tl.load(
                     b_ptrs,
                     mask=msk_n[:, None] and (offs_k[None, :] < (K - k * BLOCK_K)),
                     other=0.0,
                 )
                 b = tl.trans(b)
-                tl.compile_hint(b, "dot_pad_only_k")
+                tl.extra.cann.extension.compile_hint(b, "dot_pad_only_k")
                 accumulator = tl.dot(a, b, acc=accumulator)
 
             c = accumulator.to(C.dtype.element_ty)
