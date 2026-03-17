@@ -749,7 +749,7 @@ def causal_conv1d_update_kernel_bdt_fwd(
                 block_shape=(1, D_CHK_SIZE, T_CHK_SIZE),
                 order=(2, 1, 0),
             ),
-            out_block[None, :, :].to(out_ptr.type,element_ty),
+            out_block[None, :, :].to(out_ptr.type.element_ty),
             boundary_check=(0, 1, 2),
         )
 
