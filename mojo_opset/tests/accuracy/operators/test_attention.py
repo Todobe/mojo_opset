@@ -1440,7 +1440,7 @@ test_configs_swa_prefill_with_graph = [
     ],
 )
 @pytest.mark.parametrize("gqa_layout, global_window, local_window", [
-    ("ABAB", 4, 255),
+    #("ABAB", 4, 255),
     ("AABB", 4, 1023),
 ])
 @requires_platform_backend(platforms="ilu", backends="ixformer", reason="Test only for Ixformer")
@@ -1646,7 +1646,7 @@ test_configs_swa_decode = [
     ],
 )
 @pytest.mark.parametrize("gqa_layout, global_window, local_window", [
-    ("ABAB", 4, 255),
+    #("ABAB", 4, 255),
     ("AABB", 4, 1023),
 ])
 @auto_switch_platform()

@@ -61,7 +61,7 @@ def _nshd_to_nhsd(cache):
     return cache.permute(0, 2, 1, 3).contiguous()
 
 
-class TorchNpuStorePagedKVCache(MojoStorePagedKVCache, default_priority=0):
+class TorchNpuStorePagedKVCache(MojoStorePagedKVCache):
     _USE_NZ_MODE = None
 
     def __init__(self):

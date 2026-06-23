@@ -289,7 +289,7 @@ def bnsd_to_tnd(bnsd_tensor, cu_q_lens):
     return tnd_tensor
 
 
-class TorchNpuPagedPrefillSWA(MojoPagedPrefillSWA, default_priority=0):
+class TorchNpuPagedPrefillSWA(MojoPagedPrefillSWA):
     def forward(
         self,
         query: torch.Tensor,  # [total_q_len, n_q_heads, head_dim]
@@ -364,7 +364,7 @@ class TorchNpuPagedPrefillSWA(MojoPagedPrefillSWA, default_priority=0):
         return out_tnd
 
 
-class TorchNpuPagedDecodeSWA(MojoPagedDecodeSWA, default_priority=0):
+class TorchNpuPagedDecodeSWA(MojoPagedDecodeSWA):
     def forward(
         self,
         query: torch.Tensor,  # [bsz, n_q_heads, head_dim]
