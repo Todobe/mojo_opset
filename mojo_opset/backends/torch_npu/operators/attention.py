@@ -400,16 +400,16 @@ class TorchNpuPagedDecodeSWA(MojoPagedDecodeSWA):
         if head_dim % 128 != 0:
             raise NotImplementedError(f"NPU kernel npu_fused_infer_attention_score currently produces incorrect results for head_dim={head_dim} (not a multiple of 128)")
 
-        if block_size % 128 != 0 or block_size > 512:
-            return super().forward(
-                query,
-                key_cache,
-                value_cache,
-                total_seq_lens,
-                block_table,
-                softmax_scale=softmax_scale,
-                max_total_seq_len=max_total_seq_len,
-            )
+        # if block_size % 128 != 0 or block_size > 512:
+        #     return super().forward(
+        #         query,
+        #         key_cache,
+        #         value_cache,
+        #         total_seq_lens,
+        #         block_table,
+        #         softmax_scale=softmax_scale,
+        #         max_total_seq_len=max_total_seq_len,
+        #     )
 
         max_total_seq_len = max_total_seq_len if max_total_seq_len else total_seq_lens.max().item()
         if softmax_scale is None:
