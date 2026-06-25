@@ -431,6 +431,8 @@ test_configs_swa_prefill = [
     (2, 8, 1, 128, 0, 0, 1024, torch.bfloat16, "M_BF16_PADSEQ"),
     (2, 8, 2, 128, 2048, 0, 1024, torch.bfloat16, "M_BF16_GROUP1"),
     (2, 24, 8, 128, 1024, 1024, 1024, torch.bfloat16, "M_BF16_GROUP2"),
+    (2, 8, 1, 128, 16348, 1024, 128, torch.bfloat16, "M_BF16_WITH_CACHE_16348"),
+     (2, 8, 1, 128, 32768, 1024, 128, torch.bfloat16, "M_BF16_WITH_CACHE_32768"),
 ]
 @pytest.mark.parametrize(
     "query, k_cache, v_cache, cu_q_lens, block_tables, cu_total_seq_lens, max_q_len, max_total_seq_len",
@@ -507,6 +509,8 @@ test_configs_swa_decode = [
     (2, 8, 1, 128, 0, 1024, torch.bfloat16, "M_BF16_PADSEQ"),
     (2, 8, 2, 128, 2048, 1024, torch.bfloat16, "M_BF16_GROUP1"),
     (2, 24, 8, 128, 2048, 1024, torch.bfloat16, "M_BF16_GROUP2"),
+    (8, 16, 4, 128, 16384, 128, torch.bfloat16, "M_BF16_LONG_16384"),
+    (8, 16, 4, 128, 32768, 128, torch.bfloat16, "M_BF16_LONG_32768"),
 ]
 
 
